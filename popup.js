@@ -1,6 +1,49 @@
 //@ts-check
 
-window.addEventListener('load', () => {
+const servicesConfigurationEx = [
+    {
+        name: 'Posthog',
+        url: 'https://posthog.com',
+    },
+    {
+        name: 'Sentry',
+        url: 'https://sentry.io',
+    },
+    // {
+    //     name: 'Umami',
+    //     url: 'https://umami.is',
+    // },
+    {
+        name: 'Google Analytics',
+        url: 'https://analytics.google.com/analytics/web/',
+    }
+]
+/**
+ * Type for the services configuration.
+ * @typedef {Array<{name: string, url: string}>} ServicesConfiguration
+ */
+
+
+
+/**
+ * @param {ServicesConfiguration} servicesConfiguration
+ */
+function registerAnalyticsWithPopup(servicesConfiguration = servicesConfigurationEx) {
+    createPopupComponent(servicesConfiguration);
+}
+
+window.addEventListener('load', () => registerAnalyticsWithPopup());
+
+
+function checkIfConsentedAlready(){
+
+}
+
+/**
+ * @param {ServicesConfiguration} servicesConfiguration
+ */
+function createPopupComponent(servicesConfiguration) {
+
     console.log("loaded")
 
     const div = document.createElement('div');
@@ -14,6 +57,7 @@ window.addEventListener('load', () => {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
         max-width: 33rem;
+        max-width: 39rem;
 
         border-radius: .3rem;
         // outline: 1px solid bl;
@@ -39,36 +83,47 @@ window.addEventListener('load', () => {
 
     div.appendChild(h1);
 
+    const textSection = document.createElement('div')
+
+    textSection.style.cssText = `
+        padding-right: 4rem;
+    `
+
+    const pStyle = `
+        font-size: 1.2rem
+    
+    `
+
     const p1 = document.createElement('p');
     p1.innerText = ` I use this to help me know how users are using my websites, and what things to focus on for improvement. Also to detect bugs. 
     `;
     p1.style.cssText = `
         margin: 0;
         margin-bottom: .5rem;
-        font-size: 1.1rem;
-    ` 
-    div.appendChild(p1);
+        ${pStyle}
+    `
+    textSection.appendChild(p1);
     const p2 = document.createElement('p');
-    p2.innerText = 'I respect your privacy and try not to include sensitive information in my tracking, However you will still be tracked so feel free to opt out.';
+    p2.innerText = `I respect your privacy and try not to include sensitive information in my tracking. However, many people might disagree with the amount of data that these tools collect, in that case just click 'No'`;
     p2.style.cssText = `
         margin: 0;
         margin-bottom: .5rem;
-        font-size: 1.1rem;
+        ${pStyle}
     `
 
-    div.appendChild(p2);
+    textSection.appendChild(p2);
 
     const p3 = document.createElement('p');
     p3.innerText = `Clicking yes will enable the following analytics tools:
     `;
-    p3.appendChild(getServicesText())
+    p3.appendChild(getServicesText(servicesConfiguration))
     p3.style.cssText = `
         margin: 0;
         margin-bottom: .6rem;
-        font-size: 1.1rem;
+        ${pStyle}
     `
 
-    div.appendChild(p3);
+    textSection.appendChild(p3);
 
     const breaker = document.createElement('div');
     breaker.innerText = '';
@@ -83,7 +138,9 @@ window.addEventListener('load', () => {
         margin-bottom: 1.5rem;
         display: block;
     `
-    div.appendChild(breaker);
+    textSection.appendChild(breaker);
+
+    div.appendChild(textSection)
 
     const buttonsDiv = document.createElement('div');
     buttonsDiv.style.cssText = `
@@ -91,7 +148,7 @@ window.addEventListener('load', () => {
         justify-content: flex-end;
         gap: .9rem;
     `
-    
+
     const yes = document.createElement('button');
     const no = document.createElement('button');
     yes.innerText = 'Yes';
@@ -130,19 +187,23 @@ window.addEventListener('load', () => {
     learnMore.target = '_blank';
     learnMore.style.cssText = `
         color: rgba(0, 0, 255, .85);
-        font-size: 1.1rem;
+        font-size: 1.2rem;
 
         position: absolute;
         bottom: 1.25rem;
         let: 1rem;
     `
     div.appendChild(learnMore);
-    
-    document.body.appendChild(div);
-});
 
-function getServicesText() {
-    const config = getServicesConfiguration();
+    document.body.appendChild(div);
+
+}
+
+/**
+ * @param {ServicesConfiguration} config
+ */
+function getServicesText(config) {
+    // const config = 
     const servicesSpan = document.createElement('span');
     servicesSpan.style.cssText = `
     `
@@ -164,25 +225,4 @@ function getServicesText() {
     }
 
     return servicesSpan;
-}
-
-function getServicesConfiguration(){
-    return [
-        {
-            name: 'Posthog',
-            url: 'https://posthog.com',
-        },
-        {
-            name: 'Sentry',
-            url: 'https://sentry.io',
-        },
-        // {
-        //     name: 'Umami',
-        //     url: 'https://umami.is',
-        // },
-        {
-            name: 'Google Analytics',
-            url: 'https://analytics.google.com/analytics/web/',
-        }
-    ]
 }
