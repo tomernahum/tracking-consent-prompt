@@ -40,12 +40,13 @@ const cssTemplate = `
         box-shadow: 0 0 .2rem .1rem rgba(0,0,0,.2);
         background-color: #e6e6e6;
         color: black;
+        font-size: .9rem;
     }
 
     #consent-popup > h1 {
         margin: 0;
         margin-bottom: .75rem;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
 
     }
 
@@ -56,7 +57,7 @@ const cssTemplate = `
     }
 
     #consent-popup > .textSection > p {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         margin: 0;
     }
 
@@ -64,17 +65,36 @@ const cssTemplate = `
         margin-bottom: .75rem;
     }
 
-    #consent-popup > .buttonSection {
+    #consent-popup .bottomSection {
         display: flex;
-        justify-content: flex-end;
-        gap: .9rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        gap: .5rem;
+        
         margin-top: 2rem;
+
     }
 
-    #consent-popup > .buttonSection > button {
+    #consent-popup .bottomSection .learnMore {
+        color: rgb(0, 0, 255, .75);
+        margin-bottom: .25rem;
+        font-size: 1.1rem;
+    }
+
+    #consent-popup .buttonSection {
+        display: flex;
+        justify-content: center;
+        gap: .9rem;
+        // flex-wrap: wrap;
+
+    }   
+
+    #consent-popup .buttonSection > button {
         padding: .7rem;
         width: 7.5rem; 
-        font-size: 1.4rem;
+        font-size: 1.1rem;
         border: none;
         border-radius: .3rem;
         color: white;
@@ -84,23 +104,24 @@ const cssTemplate = `
         outline: none;
     }
 
-    #consent-popup > .buttonSection > button:hover {
+    #consent-popup .buttonSection > button:hover {
         background: rgb(100, 100, 100);
     }
 
-    #consent-popup > .buttonSection > button:active {
+    #consent-popup .buttonSection > button:active {
         background: rgb(70, 70, 70);
     }
 
     #consent-popup > .learnMore {
-        margin: 0;
-        color: rgba(0, 0, 255, 0.7);
-        font-size: 1.2rem;
+        // margin: 0;
+        // color: rgba(0, 0, 255, 0.7);
+        // font-size: 1.2rem;
 
-        position: absolute;
-        bottom: 1.5rem;
-        left: 1.5rem;
+        // position: absolute;
+        // bottom: 1.5rem;
+        // left: 1.5rem;
     }
+
 `
 const htmlTemplate = `
     <div id="consent-popup">
@@ -114,8 +135,9 @@ const htmlTemplate = `
             <div class="breaker"> </div>
             <p>
                 I respect your privacy and try not to include sensitive information in my tracking. 
-                However, many people might disagree with the amount of data that these tools collect, in that case just click 'No'
+                However, many people might disagree with the amount of data that these tools collect, in that case just click 'No'. 
             </p>
+            
             <div class="breaker"> </div>
             <p>
                 Clicking yes will enable to following analytics tools:
@@ -124,17 +146,20 @@ const htmlTemplate = `
                     </span>
                 </p>
             </p>
+            
+
             <div class="breaker"> </div>
         </div>
 
-        <div class="buttonSection">
-            <button id="yesButton">Yes</button>
-            <button id="noButton">No</button>
+        <div class="bottomSection">
+            <a class="learnMore" href="javascript:alert('coming soon');">
+                Learn More
+            </a>
+            <div class="buttonSection">
+                <button id="yesButton">Yes</button>
+                <button id="noButton">No</button>
+            </div>
         </div>
-
-        <a class="learnMore" href="javascript:alert('coming soon');">
-            Learn More
-        </a>
     </div>
     <style>
         ${cssTemplate}
