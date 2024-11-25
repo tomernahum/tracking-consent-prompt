@@ -1,5 +1,19 @@
 //@ts-check
 
+
+class WordCount extends HTMLDivElement {
+    constructor() {
+        super();
+    }
+    // Element functionality written in here
+}
+
+
+
+
+
+
+
 const servicesConfigurationEx = [
     {
         name: 'Posthog',
@@ -183,7 +197,7 @@ function createPopupComponent(servicesConfiguration) {
 
     const learnMore = document.createElement('a');
     learnMore.innerText = 'Learn More';
-    learnMore.href = 'https://github.com/AdityaBhatnagar/privacy-notice';
+    learnMore.href = '';
     learnMore.target = '_blank';
     learnMore.style.cssText = `
         color: rgba(0, 0, 255, .85);
