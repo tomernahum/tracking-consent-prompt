@@ -1,0 +1,7 @@
+Do you consent to being tracked?
+I use this to help me know how users are using my websites, and what things to focus on for improvement. Also to detect bugs. I respect your privacy and try not to include sensitive information in my tracking. 
+
+Clicking yes will enable the analytics tools: Posthog, Sentry
+Learn More
+
+Yes   No
