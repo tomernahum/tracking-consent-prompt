@@ -28,9 +28,9 @@ const cssTemplate = `
         right: 0rem;
         margin: 1rem;
         padding-bottom: 1rem;
-        padding-top: 1.5rem;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
+        padding-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
         max-width: 35rem;
         // max-width: 39rem;
         
@@ -88,8 +88,13 @@ const cssTemplate = `
         justify-content: center;
         gap: .9rem;
         // flex-wrap: wrap;
-
     }   
+    
+@media (max-width: 420px) {
+    #consent-popup .buttonSection {
+        flex-grow: 1;
+    }
+}
 
     #consent-popup .buttonSection > button {
         padding: .7rem;
