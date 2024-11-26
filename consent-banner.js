@@ -45,8 +45,8 @@ const cssTemplate = `
         padding-top: 1rem;
         padding-left: 1rem;
         padding-right: 1rem;
-        max-width: 35rem;
-        // max-width: 39rem;
+        // max-width: 50rem;
+        max-width: 32rem;
         
 
         border-radius: .3rem;
@@ -54,25 +54,25 @@ const cssTemplate = `
         box-shadow: 0 0 .2rem .1rem rgba(0,0,0,.2);
         background-color: #e6e6e6;
         color: black;
-        font-size: .9rem;
     }
 
     #consent-popup > h1 {
         margin: 0;
-        margin-bottom: .75rem;
-        font-size: 1.2rem;
+        margin-bottom: .5rem;
+        font-size: 1.4rem;
 
     }
 
     #consent-popup > .textSection {
         // padding-right: 4rem;
-        max-width: 35rem;
+        // max-width: 35rem;
         
     }
 
     #consent-popup > .textSection > p {
         font-size: 1.1rem;
         margin: 0;
+        // max-width: 0rem;
     }
 
     #consent-popup .breaker {
@@ -87,7 +87,7 @@ const cssTemplate = `
         flex-wrap: wrap;
         gap: .5rem;
         
-        margin-top: 2rem;
+        margin-top: 1rem;
 
     }
 
@@ -111,9 +111,10 @@ const cssTemplate = `
 }
 
     #consent-popup .buttonSection > button {
-        padding: .7rem;
+        padding: .5rem;
         width: 7.5rem; 
-        font-size: 1.1rem;
+        height: 2.7rem;
+        font-size: 1.2rem;
         border: none;
         border-radius: .3rem;
         color: white;
@@ -124,11 +125,11 @@ const cssTemplate = `
     }
 
     #consent-popup .buttonSection > button:hover {
-        background: rgb(100, 100, 100);
+        // background: rgb(100, 100, 100);
     }
 
     #consent-popup .buttonSection > button:active {
-        background: rgb(70, 70, 70);
+        // background: rgb(70, 70, 70);
     }
 
     #consent-popup > .learnMore {
@@ -140,6 +141,21 @@ const cssTemplate = `
         // bottom: 1.5rem;
         // left: 1.5rem;
     }
+
+    
+    #consent-popup #yesButton {
+        background: hsl(206, 100%, 50%);
+        
+        border: 0px solid black;
+    }
+
+    #consent-popup #noButton {
+        // background-color: #eeeeee;
+        // color: black;
+        // border: 2px solid black;
+    }
+
+
 
 `
 const htmlTemplate = `
